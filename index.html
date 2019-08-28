@@ -1,0 +1,216 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		
+		
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		
+		<link href="https://unpkg.com/nes.css@2.2.0/css/nes.min.css" rel="stylesheet" />
+		<link href="style.css" rel="stylesheet"/>
+		
+		<script src="ceremony-bundle.js"></script>
+		
+	</head>
+	<body>
+		<div class="container">
+        	<main class="main-content">
+	        	<section class="topic">
+					<h2 id="about"><a href="#about">#</a>Key Ceremony Guide</h2>
+					<p>Welcome to Key Ceremony Guide, a guide for creating keys. </p>
+          		</section>
+				<section class="topic">
+					<section class="schowcase">
+						<div class="nes-container with-title is-centered">
+								<p class="title  is-error"><img src=8_bit_key_by_xxx515xxx_d4l2l2n.png class='nes-avatar' /> Warning <img src=8_bit_key_by_xxx515xxx_d4l2l2n.png class='nes-avatar' /></p>
+								
+								<p>This tool is for <span class='nes-text is-error'>educational purposes only</span> and should never be used to create keys destined for real funds. </p>
+								<button type="button" class="nes-btn is-error" id="button_understand">I Understand</button>
+								<p id='understood'></p>
+								
+						</div>
+					</section>
+					<section class="showcase">
+						<section class="nes-container with-title">
+							<p class="title">Entropy</p>
+							<p>
+								<div class="nes-field">
+									<label for="entropy_dice_field">
+										<label> 
+											<input type="checkbox" class="nes-checkbox" id="entropy_checkbox_dice"/>
+											<span>Dice</span>
+											</label>
+									</label>
+									<input type="text" id="entropy_dice_field" class="nes-input" value="ex: 1 3 1 1 3 2 4 5..."  disabled="disabled">
+								</div>
+							</p>
+							<p>
+								<div class="nes-field">
+									<label for="entropy_cards_field">
+										<label>
+											<input type="checkbox" class="nes-checkbox"  id="entropy_checkbox_cards"  />
+											<span>Cards</span>
+											</label>
+										</label>
+									<input type="text" id="entropy_cards_field" class="nes-input"  value="ex: KC 4S 8C 9H 10D..." disabled="disabled">
+								</div>
+							</p>
+							<p>
+								<div class="nes-field">
+									<label for="entropy_system_status_field">
+										<label>
+											<input type="checkbox" class="nes-checkbox"  id="entropy_checkbox_system_status" />
+											<span>System Status</span>
+										</label>
+									</label>
+									<section class="nes-container" id="entropy_system_status_field">
+										<p>
+											<label>
+												<input type="radio" class="nes-radio" id="entropy_system_status_type_optimistic" name="entropy_system_status_type" value="Optimistic" checked />
+												<span>Optimistic</span>
+											</label>
+			
+											<label>
+												<input type="radio" class="nes-radio" id="entropy_system_status_type_realistic" name="entropy_system_status_type" value="Realistic" />
+												<span>Realistic</span>
+											</label>
+										</p>
+										<p>
+											<div class="nes-field is-inline">
+												<label for="progress_cpu">CPU(<span id="progress_cpu_value">90</span>%)</label>
+												<progress id="progress_cpu" class="nes-progress is-primary is-pattern" value="90" max="100"></progress>
+											</div>
+										</p>
+										<p>
+											<div class="nes-field is-inline">
+												<label for="progress_ram">RAM(<span id="progress_ram_value">75</span>%)</label>
+											<progress id="progress_ram" class="nes-progress is-success is-pattern" value="75" max="100"></progress>
+											</div>
+										</p>
+										<p>
+											<div class="nes-field is-inline">
+												<label for="progress_net">NET(<span id="progress_net_value">40</span>%)</label>
+											<progress id="progress_net" class="nes-progress is-warning is-pattern" value="40" max="100"></progress>
+											</div>
+										</p>
+									</section>
+								</div>
+							</p>
+
+							<p>
+								<div class="nes-field">
+									<label for="entropy_TrueRNG_field">
+										<label>
+											<input type="checkbox" class="nes-checkbox"  id="entropy_checkbox_TrueRNG" />
+											<span>TrueRNG&copy;</span>
+										</label>
+									</label>
+									<input type="text" id="entropy_TrueRNG_field" class="nes-input" value="0c da 6b 7c 33 d9 37 94 33 24...">
+								</div>
+							</p>
+						</section>
+					</section>
+					<section class="showcase">
+						<button type="button" class="nes-btn is-success" id="button_generate">Generate key!</button>
+					</section>
+					
+					<section class="showcase">
+						<section class="nes-container with-title">
+							<p class="title">Results</p>
+							<p>
+								<label>
+									<input type="radio" class="nes-radio" id="result_display_type_seed" name="result_display_type" value="Seed" checked />
+									<span class="nes-text result_display_type is-primary" id="results_display_type_Seed_value">Seed</span>
+								</label>
+
+								<label>
+									<input type="radio" class="nes-radio" id="result_display_type_bip32" name="result_display_type" value="xpriv"/>
+									<span class="nes-text result_display_type" id="results_display_type_xpriv_value">Private Key</span>
+								</label>
+
+								<label>
+									<input type="radio" class="nes-radio" id="result_display_type_bip32" name="result_display_type" value="xpub"/>
+									<span class="nes-text result_display_type" id="results_display_type_xpub_value">Public Key</span>
+								</label>
+								
+								<label>
+									<input type="radio" class="nes-radio" id="result_display_type_words" name="result_display_type" value="Words"/>
+									<span class="nes-text result_display_type" id="results_display_type_Words_value">Mnemonic</span>
+								</label>
+								
+								<label>
+									<input type="radio" class="nes-radio" id="result_display_type_hide" name="result_display_type" value="Hide"/>
+									<span class="nes-text result_display_type" id="results_display_type_Hide_value">Hide</span>
+								</label>
+							</p>
+
+							<p>
+								<textarea id="textarea_field" class="nes-textarea" rows="4"></textarea>
+							</p>
+
+						</section>
+					</section>
+
+
+					<section class="showcase">
+						<button type="button" class="nes-btn is-primary" id="button_split">Split \/</button> <button type="button" class="nes-btn is-primary" id="button_combine">Combine /\</button>
+					</section>
+					
+					<section class="showcase">
+						<section class="nes-container with-title">
+							<p class="title">Shamir Pieces</p>
+							<p> 
+			
+								<label>
+									<input type="radio" class="nes-radio" id="split_display_0" name="split_display" value="0" checked />
+									<span class="nes-text split_display is-primary" id="split_display_0_value">1st Piece</span>
+								</label>
+
+								<label>
+									<input type="radio" class="nes-radio" id="split_display_1" name="split_display" value="1"/>
+									<span class="nes-text split_display" id="split_display_1_value">2nd Piece</span>
+								</label>
+
+								<label>
+									<input type="radio" class="nes-radio" id="split_display_2" name="split_display" value="2"/>
+									<span class="nes-text split_display" id="split_display_2_value">3rd Piece</span>
+								</label>
+								
+
+							</p>
+							<p>
+								<textarea id="splitarea_field_0" class="nes-textarea" rows="4" ></textarea>
+								<textarea id="splitarea_field_1" class="nes-textarea" rows="4" ></textarea>
+								<textarea id="splitarea_field_2" class="nes-textarea" rows="4" ></textarea>
+							</p>
+
+						</section>
+					</section>
+
+
+					<section class="showcase">
+						<section class="nes-container with-title">
+							<p class="title">Credits</p>
+
+							<p>
+								Built (quickly) by <a href="https://www.linkedin.com/in/joshuamcdougall/">Joshua McDougall</a> for <a href="https://blockchaintraining.org/">#BTC2019</a>
+								<br /> <a href="http://abstrct.com">abstrct.com</a> <a href="https://twitter.com/abstr_ct">@abstr_ct</a> 
+							</p>
+							
+							<p>
+								Style elements from <a href="https://nostalgic-css.github.io/NES.css/">NES.css</a>
+							</p>
+
+							<p>
+								Please feel free to <a href="https://github.com/Abstrct/Key-Ceremony-Guide">Make This Better</a>
+							</p>
+
+						</section>
+					</section>
+
+				</section>
+			</main>
+		</div>
+	</body>
+</html>
