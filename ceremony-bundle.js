@@ -7,6 +7,7 @@ const shajs = require('sha.js');
 const sss = require('secrets.js');
 
 var combined_entropy = '';
+var current_seed = '';
 
 var timer_system_status = null;
 var timer_TrueRNG = null;
@@ -199,7 +200,10 @@ function displayResults() {
 	
 	results = ''; 
 	
-	if ($('input[name=result_display_type]:checked').val() == 'Seed' ) {
+	if ($('input[name=result_display_type]:checked').val() == 'Entropy' ) {
+		results = current_seed;
+		
+	} else if ($('input[name=result_display_type]:checked').val() == 'Seed' ) {
 		results = combined_entropy;
 		
 	} else if ($('input[name=result_display_type]:checked').val() == 'Words' ) {
