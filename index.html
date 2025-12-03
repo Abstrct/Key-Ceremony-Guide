@@ -57,6 +57,17 @@
 								</div>
 							</p>
 							<p>
+							<div class="nes-field">
+								<label for="entropy_date_field">
+									<label>
+										<input type="checkbox" class="nes-checkbox"  id="entropy_checkbox_date"  />
+										<span>Date / Time</span>
+									</label>
+								</label>
+								<input type="text" id="entropy_date_field" class="nes-input"  value="ex: 2025-12-03 10:30" disabled="disabled">
+							</div>
+							</p>
+							<p>
 								<div class="nes-field">
 									<label for="entropy_system_status_field">
 										<label>
@@ -119,9 +130,15 @@
 						<section class="nes-container with-title">
 							<p class="title">Results</p>
 							<p>
+
 								<label>
-									<input type="radio" class="nes-radio" id="result_display_type_seed" name="result_display_type" value="Seed" checked />
-									<span class="nes-text result_display_type is-primary" id="results_display_type_Seed_value">Seed</span>
+									<input type="radio" class="nes-radio" id="result_display_type_Entropy" name="result_display_type" value="Entropy" checked />
+									<span class="nes-text result_display_type is-primary" id="results_display_type_Entropy_value">Entropy</span>
+								</label>
+
+								<label>
+									<input type="radio" class="nes-radio" id="result_display_type_seed" name="result_display_type" value="Seed"  />
+									<span class="nes-text result_display_type" id="results_display_type_Seed_value">Seed</span>
 								</label>
 
 								<label>
@@ -178,5 +195,22 @@
 				</section>
 			</main>
 		</div>
+		<!-- Default Statcounter code for Ceremony.guide
+		https://ceremony.guide -->
+		<script type="text/javascript">
+		var sc_project=12112573; 
+		var sc_invisible=1; 
+		var sc_security="0aab355b"; 
+		var sc_https=1; 
+		</script>
+		<script type="text/javascript"
+		src="https://www.statcounter.com/counter/counter.js"
+		async></script>
+		<noscript><div class="statcounter"><a title="Web Analytics"
+		href="https://statcounter.com/" target="_blank"><img
+		class="statcounter"
+		src="https://c.statcounter.com/12112573/0/0aab355b/1/"
+		alt="Web Analytics"></a></div></noscript>
+		<!-- End of Statcounter Code -->
 	</body>
 </html>

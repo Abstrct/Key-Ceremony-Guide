@@ -5,9 +5,11 @@ const shajs = require('sha.js');
 const sss = require('secrets.js');
 
 var combined_entropy = '';
+var current_seed = '';
 
 var timer_system_status = null;
 var timer_TrueRNG = null;
+var timer_date = null;
 
 var shares = null;
 
@@ -32,6 +34,14 @@ $(document).ready(function() {
 			
 		} 
 		
+		if ($('#entropy_checkbox_date').is(':checked')) {
+			
+			current_seed = ((current_seed == '') ? '' : current_seed + ' ')
+
+			current_seed = current_seed + $('#entropy_date_field').val().toString(16);
+			
+		} 
+
 		if ($('#entropy_checkbox_system_status').is(':checked')) {
 
 			current_seed = ((current_seed == '') ? '' : current_seed + ' ')
@@ -114,6 +124,19 @@ $(document).ready(function() {
     	        $('#entropy_cards_field').prop('disabled', true);
     	        $('#entropy_cards_field').prop('value','ex: KC 4S 8C 9H 10D...');
         	}
+		} else if (this.id == 'entropy_checkbox_date') {
+			if(this.checked) {
+				$('#entropy_date_field').prop('disabled', false);
+				$('#entropy_date_field').prop('value','');
+
+				timer_date = setInterval(get_Date, 2000);
+
+			} else {
+				$('#entropy_date_field').prop('disabled', true);
+				$('#entropy_date_field').prop('value','ex: 2025-12-03 10:30');
+
+				clearInterval(timer_date);
+			}
         } else if (this.id == 'entropy_checkbox_system_status') {
 	        if(this.checked) {
 	        	$('#progress_cpu').removeClass('is-pattern');
@@ -197,7 +220,10 @@ function displayResults() {
 	
 	results = ''; 
 	
-	if ($('input[name=result_display_type]:checked').val() == 'Seed' ) {
+	if ($('input[name=result_display_type]:checked').val() == 'Entropy' ) {
+		results = current_seed;
+		
+	} else if ($('input[name=result_display_type]:checked').val() == 'Seed' ) {
 		results = combined_entropy;
 		
 	} else if ($('input[name=result_display_type]:checked').val() == 'Words' ) {
@@ -249,7 +275,20 @@ get_TrueRNG = function TrueRNG(){
 		+ Math.floor(Number.MAX_SAFE_INTEGER * Math.random()).toString(16).match(/.{2}/g).join(' '));
 }
 
+get_Date = function NowDate(){
+	// Stop judging me...
+	var now = new Date();
+	var year = now.getFullYear();
+	var month = zeroPad(now.getMonth() + 1, 2);
+	var day = zeroPad(now.getDate(), 2);
+	var hours = zeroPad(now.getHours(), 2);
+	var minutes = zeroPad(now.getMinutes(), 2);
+	
+	$('#entropy_date_field').attr('value', year + '-' + month + '-' + day + ' ' + hours + ':' + minutes);
+}
+
 function zeroPad(num, places) {
   var zero = places - num.toString().length + 1;
   return Array(+(zero > 0 && zero)).join("0") + num;
 }
+
