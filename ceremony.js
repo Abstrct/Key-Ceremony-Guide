@@ -127,9 +127,8 @@ $(document).ready(function() {
 		} else if (this.id == 'entropy_checkbox_date') {
 			if(this.checked) {
 				$('#entropy_date_field').prop('disabled', false);
-				$('#entropy_date_field').prop('value','');
 
-				timer_date = setInterval(get_Date, 2000);
+				timer_date = setInterval(get_Date, 200);
 
 			} else {
 				$('#entropy_date_field').prop('disabled', true);
@@ -225,7 +224,7 @@ function displayResults() {
 		
 	} else if ($('input[name=result_display_type]:checked').val() == 'Seed' ) {
 		results = combined_entropy;
-		
+
 	} else if ($('input[name=result_display_type]:checked').val() == 'Words' ) {
 		results = generateMnemonic(combined_entropy.toString(16));	
 		
@@ -276,7 +275,6 @@ get_TrueRNG = function TrueRNG(){
 }
 
 get_Date = function NowDate(){
-	// Stop judging me...
 	var now = new Date();
 	var year = now.getFullYear();
 	var month = zeroPad(now.getMonth() + 1, 2);
